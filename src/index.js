@@ -5,7 +5,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
-import { gainXp } from './actions';
+import { move } from './actions';
 
 const store = createStore(rootReducer);
 
@@ -16,6 +16,8 @@ ReactDOM.render(
   document.getElementById('root'));
 registerServiceWorker();
 
-store.dispatch(gainXp(50));
+// action reducer testing
+store.dispatch(move(1,0));
 console.log(store.getState());
-
+store.dispatch(move(0,1));
+console.log(store.getState());
