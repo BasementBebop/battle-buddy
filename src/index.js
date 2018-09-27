@@ -5,7 +5,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
-import { move } from './actions';
+import { move, takeDamage, drinkPotion } from './actions';
 
 const store = createStore(rootReducer);
 
@@ -16,8 +16,12 @@ ReactDOM.render(
   document.getElementById('root'));
 registerServiceWorker();
 
-// action reducer testing
+// wack action/reducer testing
 store.dispatch(move(1,0));
 console.log(store.getState());
 store.dispatch(move(0,1));
+console.log(store.getState());
+store.dispatch(takeDamage(5));
+console.log(store.getState());
+store.dispatch(drinkPotion());
 console.log(store.getState());

@@ -44,11 +44,26 @@ const position = (state = initialState.position, action) => {
     default:
       return state;
   }
-    
+}
+
+const stats = (state = initialState.stats, action) => {
+  let { health, maxHealth } = state;
+  
+  switch (action.type) {
+    case 'DRINK_POTION':
+      health = Math.min(health + 20, maxHealth);
+      return {...state, health, maxHealth}
+    case 'TAKE_DAMAGE':
+      health = Math.max(0, health - action.damage)
+      return {...state, health}
+    default:
+      return state;
+  }
 }
 
 export default combineReducers({
   playerLevel,
   playerXp,
-  position
+  position,
+  stats
 })

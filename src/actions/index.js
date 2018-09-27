@@ -20,5 +20,6 @@ export const drinkPotion = () => ({
 });
 
 export const takeDamage = (damage) => ({
-  type: 'TAKE_DAMAGE'
+  type: 'TAKE_DAMAGE',
+  damage
 });
