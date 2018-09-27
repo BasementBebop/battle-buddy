@@ -61,9 +61,22 @@ const stats = (state = initialState.stats, action) => {
   }
 }
 
+const inventory = (state = initialState.inventory, action) => {
+  let { potions } = state;
+
+  switch (action.type) {
+    case 'DRINK_POTION':
+      potions = Math.max(0, potions - 1);
+      return { ...state, potions };
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   playerLevel,
   playerXp,
   position,
-  stats
+  stats,
+  inventory
 })
